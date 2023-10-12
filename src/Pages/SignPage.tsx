@@ -34,20 +34,28 @@ const SignPage = () => {
       className="d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      <div>
+      <div className=" p-5 bg-dark-subtle rounded-3">
         <GoogleLogin
           onSuccess={(credentialResponse) => handleSuccess(credentialResponse)}
           onError={() => {
             console.log("Login Failed");
           }}
         />
-        <div className="d-flex justify-content-center">
+        <div >
           {user && (
-            <div>
+            <div className="d-flex justify-content-center  align-items-center gap-3">
+              <div>
+
+             
               {
               // @ts-ignore
               user.name}
-              <img src={
+               </div>
+              
+              <img 
+              height={"40px"}
+              width={"40px"}
+              style={{border: '2px solid white ', borderRadius:"50%"}} src={
                 // @ts-ignore
                 user.picture} alt="userImage" />
             </div>

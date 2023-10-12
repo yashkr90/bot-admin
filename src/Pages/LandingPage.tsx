@@ -32,7 +32,7 @@ const LandingPage = () => {
           <div style={{borderRadius: '50%'}}>
 
           <img
-            style={{border: '2px solid red '}}
+            style={{border: '2px solid red ', borderRadius:"50%"}}
             src={
               // @ts-ignore
              user? user.picture:''}
