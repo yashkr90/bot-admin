@@ -1,5 +1,6 @@
 import { GoogleLogin } from "@react-oauth/google";
-
+// import Cookies from 'universal-cookie';
+import Cookies from "js-cookie";
 import { setuser } from "../api/api";
 import jwt_decode from "jwt-decode";
 import { UserContext } from "../App";
@@ -15,6 +16,7 @@ const SignPage = () => {
   const handleSuccess = async (credentialResponse: any) => {
     console.log(credentialResponse);
 
+    const jwt_token = credentialResponse.credential;
     const decoded: object = jwt_decode(credentialResponse.credential);
 
     if (decoded) {
@@ -23,6 +25,9 @@ const SignPage = () => {
       setUser(decoded);
 
       const res = await setuser(decoded);
+      let date = new Date();
+      date.setTime(date.getTime() + 5 * 60 * 1000); // expires in 5 min
+      Cookies.set("jwt_token", jwt_token, { expires: date });
       console.log(res);
 
       navigate("/dashboard");
@@ -41,23 +46,26 @@ const SignPage = () => {
             console.log("Login Failed");
           }}
         />
-        <div >
+        <div>
           {user && (
             <div className="d-flex justify-content-center  align-items-center gap-3">
               <div>
+                {
+                  // @ts-ignore
+                  user.name
+                }
+              </div>
 
-             
-              {
-              // @ts-ignore
-              user.name}
-               </div>
-              
-              <img 
-              height={"40px"}
-              width={"40px"}
-              style={{border: '2px solid white ', borderRadius:"50%"}} src={
-                // @ts-ignore
-                user.picture} alt="userImage" />
+              <img
+                height={"40px"}
+                width={"40px"}
+                style={{ border: "2px solid white ", borderRadius: "50%" }}
+                src={
+                  // @ts-ignore
+                  user.picture
+                }
+                alt="userImage"
+              />
             </div>
           )}
         </div>
