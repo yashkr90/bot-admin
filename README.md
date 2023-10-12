@@ -10,9 +10,9 @@ This project is the front-end admin page for the Telegram Weather Update Bot. It
 
 ## Features
 
-- Login functionality for administrators.
+- Admin login
 - Dashboard to view bot statistics and important information.
-- Settings page to configure bot settings.
+- Page to configure bot settings API keys, add/remove users.
 
 ## Prerequisites
 
