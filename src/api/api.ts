@@ -18,7 +18,7 @@ export const getSubscribers = async () => {
 export const subscribe = async (subscriber:any) => {
   const userData = { chatId: subscriber.userId, location: subscriber.city};
   try {
-    return await axios.post(`${URL}/subscribe`, userData);
+    return await axios.post(`${URL}/api/subscribe`, userData);
   } catch (error) {
     console.log("Error while subcribing", error);
   }
