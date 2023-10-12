@@ -19,17 +19,27 @@ const LandingPage = () => {
 
     checkuser();
   });
+ // @ts-ignore
   return (
     <div className="d-flex justify-content-center align-items-center">
       <div className="my-3 mx-2">
         <div className="d-flex justify-content-between">
-          <span className="fs-4 text-info">{user.name.toUpperCase()}</span>
+        
+          <span className="fs-4 text-info">{
+          // @ts-ignore
+          user.name.toUpperCase()}</span>
+          <div style={{borderRadius: '50%'}}>
+
           <img
-            src={user.picture}
+            style={{border: '2px solid red '}}
+            src={
+              // @ts-ignore
+              user.picture}
             alt="userImage"
             height={"40px"}
             width={"40px"}
-          />
+            />
+            </div>
         </div>
         <div className="my-3">
           <ApiInput />

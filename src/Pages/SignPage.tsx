@@ -44,8 +44,12 @@ const SignPage = () => {
         <div className="d-flex justify-content-center">
           {user && (
             <div>
-              {user.name}
-              <img src={user.picture} alt="userImage" />
+              {
+              // @ts-ignore
+              user.name}
+              <img src={
+                // @ts-ignore
+                user.picture} alt="userImage" />
             </div>
           )}
         </div>
