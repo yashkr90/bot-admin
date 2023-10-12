@@ -38,7 +38,7 @@ const Tables = () => {
   return (
     <Table striped bordered hover>
       <thead>
-        <tr>
+        <tr className="text-center">
           <th>User ID</th>
           <th>City</th>
           <th>Subscription</th>
