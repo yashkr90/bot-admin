@@ -1,5 +1,5 @@
 import "./App.css";
-import Tables from "./Components/Tables";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,

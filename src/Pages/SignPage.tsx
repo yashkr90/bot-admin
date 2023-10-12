@@ -6,6 +6,8 @@ import { UserContext } from "../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 const SignPage = () => {
 
   const { user, setUser } = useContext(UserContext);
@@ -15,7 +17,7 @@ const SignPage = () => {
   const handleSuccess = async (credentialResponse: any) => {
     console.log(credentialResponse);
 
-    const decoded = jwt_decode(credentialResponse.credential);
+    const decoded:object = jwt_decode(credentialResponse.credential);
 
     if (decoded) {
 

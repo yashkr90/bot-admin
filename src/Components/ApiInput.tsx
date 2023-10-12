@@ -9,17 +9,20 @@ const ApiInput = () => {
   const [apiKey, setApiKey] = useState<string>("");
   const { user, setUser } = useContext(UserContext);
 
-  const handleChange = async() => {
+  const handleSubmit = async () => {
     console.log(apiKey);
-    await setApi({api:apiKey,email:user.email});
+    if (user) {
+      console.log(apiKey);
+      // @ts-ignore
+      await setApi({ api: apiKey, email: user.email });
+    } else {
+      console.error("User or email is undefined");
+    }
   };
-  const handleInputChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    const apikey=e.target.value;
+    const apikey = e.target.value;
     setApiKey(apikey);
-
-    
-
   };
 
   return (
@@ -32,7 +35,7 @@ const ApiInput = () => {
         value={apiKey}
       />
       <Button
-        onClick={handleChange}
+        onClick={handleSubmit}
         variant="outline-secondary"
         type="submit"
         id="button-addon2"
