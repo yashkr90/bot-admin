@@ -25,14 +25,17 @@ const Tables = () => {
     };
 
     getAllSubscribers();
-  },[]);
+  }, []);
 
-  const handleChange = async(e: React.MouseEvent, userId: string) => {
+  const handleChange = async (e: React.MouseEvent, userId: string) => {
+    const res = await unsubscribe(userId);
+    if (res === 200) {
+      alert("User unsubscribed successfully");
+    }
     
-   const res= await unsubscribe(userId);
-   if(res===200){
-    alert("User unsubscribed successfully");
-   }
+    setSubscribers((prev) => {
+      return prev.filter((subs) => subs.userid !== userId);
+    });
   };
 
   return (
@@ -52,14 +55,17 @@ const Tables = () => {
                   <td>{subs.userid}</td>
                   <td>{subs.city}</td>
                   <td>
-                    
-                    <Button onClick={(e)=>handleChange(e,subs.userid)} variant="secondary">Remove</Button>
+                    <Button
+                      onClick={(e) => handleChange(e, subs.userid)}
+                      variant="secondary"
+                    >
+                      Remove
+                    </Button>
                   </td>
                 </tr>
               );
             })
           : ""}
-  
       </tbody>
     </Table>
   );

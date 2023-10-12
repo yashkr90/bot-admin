@@ -25,16 +25,17 @@ const LandingPage = () => {
       <div className="my-3 mx-2">
         <div className="d-flex justify-content-between">
         
+        
           <span className="fs-4 text-info">{
           // @ts-ignore
-          user.name.toUpperCase()}</span>
+          user? user.name.toUpperCase() : ''}</span>
           <div style={{borderRadius: '50%'}}>
 
           <img
             style={{border: '2px solid red '}}
             src={
               // @ts-ignore
-              user.picture}
+             user? user.picture:''}
             alt="userImage"
             height={"40px"}
             width={"40px"}
